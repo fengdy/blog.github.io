@@ -140,21 +140,18 @@
 </ul>
 <p><strong>常见使用</strong> </p>
 <ol>
-<li><p>slice为引用类型，不支持比较操作，但和nil比较除外.   </p>
-<pre><code>var s []int
-var ss [] int
-fmt.Println(s == nil) // 输出true
-fmt.Println(ss == nil) // 输出true
-fmt.Println(s == ss) // 编译报错 invalid operation: s == ss (slice can only be compared to nil)</code></pre></li>
+<li><p>slice为引用类型，不支持比较操作，但和nil比较除外. </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">var s []int	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">var ss [] int</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">fmt.Println(s &#x3D;&#x3D; nil) &#x2F;&#x2F; 输出true</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">fmt.Println(ss &#x3D;&#x3D; nil) &#x2F;&#x2F; 输出true</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">fmt.Println(s &#x3D;&#x3D; ss) &#x2F;&#x2F; 编译报错 invalid operation: s &#x3D;&#x3D; ss (slice can only be compared to nil)</span></pre></td></tr></table></figure></li>
 <li><p>slice是基于数组的一种数据类型，和数组关系密切，当向slice添加元素时(append操作)，如果slice所引用的数组大小不足时，此时，在底层会新建一个匿名数组，并将slice内的元素copy到新的匿名数组，并将slice的指针指向新的匿名数组，在新的匿名数组中，进行添加元素的操作，所以，在使用切片时，应当设置合适的容量，提高效率</p>
 </li>
 <li><p>因为数组的大小是固定的，且在使用数组做参数时，是值拷贝，所以，在使用数组的场景时经常使用slice代替，以此解决数组大小不可变及值拷贝问题</p>
 </li>
 <li><p>创建切片的方式如下<br> 直接创建</p>
-<pre><code>var s [] int</code></pre><p> 或者使用make </p>
-<pre><code>s := make([]int, 10, 20)
-# make([]type, len, cap), 当创建slice时，不指明cap时，切片的cap与len相同</code></pre><p> 或者   </p>
-<pre><code>s := []int{1, 2, 3}</code></pre></li>
+<p>  <code>var s [] int</code></p>
+<p> 或者使用make </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">s :&#x3D; make([]int, 10, 20)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># make([]type, len, cap), 当创建slice时，不指明cap时，切片的cap与len相同</span></pre></td></tr></table></figure>
+<p> 或者<br>  <code>s := []int{1, 2, 3}</code></p>
+</li>
 </ol>
 
         </div>
