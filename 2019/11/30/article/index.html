@@ -131,17 +131,30 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <h2 id="Golang学习笔记–Slice"><a href="#Golang学习笔记–Slice" class="headerlink" title="Golang学习笔记–Slice"></a>Golang学习笔记–Slice</h2><p><strong>基本概念</strong></p>
+          <p><strong>基本概念</strong></p>
 <p>切片(Slice)由指针、长度、容量组成，属于引用类型，是一种基于数组的可变长数据类型，与数组array类型关系密切，其中：  </p>
 <ul>
 <li>指针指向所引用数组的特定元素，该元素为slice的首元素，但不一定是数组的首元素</li>
 <li>长度(len)为切片的长度</li>
 <li>容量，从指针指向的数组的位置，到数组最后元素位置的长度</li>
 </ul>
-<p><strong>个人理解</strong>  </p>
+<p><strong>常见使用</strong> </p>
 <ol>
-<li>slice为引用类型，不支持比较操作，但和nil比较除外  </li>
-<li>slice是基于数组的一种数据类型，和数组关系密切，当向slice添加元素时(append操作)，如果slice所引用的数组大小不足时，此时，在底层会新建一个匿名数组，并将数组元素copy到新的匿名数组，并将slice的指针指向新的匿名数组，在新的匿名数组中，进行添加元素的操作</li>
+<li><p>slice为引用类型，不支持比较操作，但和nil比较除外.   </p>
+<pre><code>var s []int
+var ss [] int
+fmt.Println(s == nil) // 输出true
+fmt.Println(ss == nil) // 输出true
+fmt.Println(s == ss) // 编译报错 invalid operation: s == ss (slice can only be compared to nil)</code></pre></li>
+<li><p>slice是基于数组的一种数据类型，和数组关系密切，当向slice添加元素时(append操作)，如果slice所引用的数组大小不足时，此时，在底层会新建一个匿名数组，并将slice内的元素copy到新的匿名数组，并将slice的指针指向新的匿名数组，在新的匿名数组中，进行添加元素的操作，所以，在使用切片时，应当设置合适的容量，提高效率</p>
+</li>
+<li><p>因为数组的大小是固定的，且在使用数组做参数时，是值拷贝，所以，在使用数组的场景时经常使用slice代替，以此解决数组大小不可变及值拷贝问题</p>
+</li>
+<li><p>创建切片的方式如下<br> 直接创建</p>
+<pre><code>var s [] int</code></pre><p> 或者使用make </p>
+<pre><code>s := make([]int, 10, 20)
+# make([]type, len, cap), 当创建slice时，不指明cap时，切片的cap与len相同</code></pre><p> 或者   </p>
+<pre><code>s := []int{1, 2, 3}</code></pre></li>
 </ol>
 
         </div>
