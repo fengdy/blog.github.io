@@ -147,13 +147,13 @@
 <li><p>因为数组的大小是固定的，且在使用数组做参数时，是值拷贝，所以，在使用数组的场景时经常使用slice代替，以此解决数组大小不可变及值拷贝问题</p>
 </li>
 <li><p>创建切片的方式如下<br> 直接创建</p>
-<p>  <code>var s [] int</code></p>
-<p> 或者使用make </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">s :&#x3D; make([]int, 10, 20)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># make([]type, len, cap), 当创建slice时，不指明cap时，切片的cap与len相同</span></pre></td></tr></table></figure>
-<p> 或者<br>  <code>s := []int{1, 2, 3}</code></p>
+<p><code>var s [] int</code></p>
+<p>或者使用make </p>
 </li>
 </ol>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">s :&#x3D; make([]int, 10, 20)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># make([]type, len, cap), 当创建slice时，不指明cap时，切片的cap与len相同</span></pre></td></tr></table></figure>
+<pre><code>或者   
+ `s := []int{1, 2, 3}`</code></pre>
         </div>
       </article>
     </div>
@@ -170,6 +170,10 @@
     </div>
     <!-- Pre or Next -->
     <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/blog.github.io/2019/12/05/redis-py/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+        </div>
       
       
         <div class="nav-next">
