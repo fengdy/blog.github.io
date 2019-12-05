@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="fengdy">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Pandas简单入门"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="随笔"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>Pandas简单入门 - 随笔</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/blog.github.io/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/blog.github.io/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="随笔" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/blog.github.io/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog.github.io/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Pandas简单入门
+            
+          </h1>
+          <p class="posted-on">
+          2019-12-05
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/blog.github.io/tags/python/" rel="tag">
+                  python
+                </a>
+              
+                <a href="/blog.github.io/tags/pandas/" rel="tag">
+                  pandas
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h2 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1.基本介绍"></a>1.基本介绍</h2><p>Pandas是一款开源的数据分析分析包,基于Numpy开发,提供了大量能快速便捷处理数据的函数</p>
+<h3 id="1-1数据结构"><a href="#1-1数据结构" class="headerlink" title="1.1数据结构"></a>1.1数据结构</h3><p>Pandas支持三种数据结构, 分别是Series/DataFrame/Panel, 可简单理解分别对应一维数组/二维数组/三维数组, 常用结构为Series/DataFrame.</p>
+<p>
+Series/DataFrame的创建如下所示, 有多种方式 
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">import pandas as pd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"># Series创建</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">s &#x3D; pd.Series([1,2,3,4])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">s &#x3D; pd.Series(range(1,4))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"># dataframe创建</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.DataFrame(&#123;&#39;a&#39;:[1,2,3,4], &#39;b&#39;:&#39;a&#39;&#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.DataFrame([[1,&#39;a&#39;],[2,&#39;a&#39;],[3,&#39;a&#39;],[4,&#39;a&#39;]], columns&#x3D;[&#39;a&#39;,&#39;b&#39;])</span></pre></td></tr></table></figure>
+</p>
+&nbsp
+
+<p>上例中创建的Dataframe实例df, 形如以下表格, 列明为 a b, a列值为 [1, 2, 3, 4], b列值为[‘a’, ‘a’, ‘a’, ‘a’], 同时生成了默认的索引值index:[0, 1, 2, 3]  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>a</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>a</td>
+</tr>
+</tbody></table>
+<p>其中df中的df[‘a’]或者df[‘b’]均为Pandas的Series结构数据</p>
+<p>常见创建DataFrame的方法:</p>
+<ul>
+<li>传入字典/列表等, 如上例</li>
+<li>读取Excel/CSV等文件, 形如read_excel/read_csv等</li>
+<li>读取数据库, 形如read_sql等</li>
+<li>django数据, 形如: df=pd.DataFrame.from_records(Models.objects.all().values(‘id’,’emp_name’))</li>
+<li>其他, 如json/HDF5/msgpack/pickling等</li>
+</ul>
+<p>默认情况下,创建的DataFrame的index均为从0开始的数字, 形如上例中的df</p>
+<h3 id="1-2基本用法"><a href="#1-2基本用法" class="headerlink" title="1.2基本用法"></a>1.2基本用法</h3><p>使用上述例子中的df为例介绍, 并执行操作: df.index = range(1,5), df形如以下:   </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>a</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>a</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>a</td>
+</tr>
+</tbody></table>
+<h4 id="1-2-1-获取特定值"><a href="#1-2-1-获取特定值" class="headerlink" title="1.2.1 获取特定值"></a>1.2.1 获取特定值</h4><ul>
+<li>at, 如df.at[1, ‘a’]值为1 df.at[1, ‘a’] = 10 则将a列index为1位置的值修改为10</li>
+<li>loc, df.loc[1], df.loc[1:2], loc使用的是index的值, 比如df.loc[1], 获取的是index为1的Series, df.loc[1, ‘a’]则是值, loc返回值类型可能是Series/DataFrame或者特定值</li>
+<li>iloc, df.iloc[0,0]为1, iloc使用的参数则是偏移量, 第0个, 第1个等等<h4 id="1-2-2-新增列"><a href="#1-2-2-新增列" class="headerlink" title="1.2.2 新增列"></a>1.2.2 新增列</h4></li>
+<li>特定值, 如df[‘c’] = 1, df[‘d’] = range(df.shape[0]) 等</li>
+<li>依赖现有列, 如df[‘e’] = df[‘a’] + df[‘c’], 一定要主要两列值是否可以做+操作</li>
+<li>函数, 如df[‘e’] = df.apply(lambda x: x[‘a’]+1, axis=1, reduce=True)</li>
+</ul>
+<h4 id="1-2-3-删除列"><a href="#1-2-3-删除列" class="headerlink" title="1.2.3 删除列"></a>1.2.3 删除列</h4><ul>
+<li>drop, 如df.drop([‘c’,’e’],axis=1), 返回一个新的DataFrame,无’c’,’e’列</li>
+<li>指定columns, 如cf = df[[‘a’, ‘b’]]</li>
+</ul>
+<h4 id="1-2-4-新增行"><a href="#1-2-4-新增行" class="headerlink" title="1.2.4 新增行"></a>1.2.4 新增行</h4><ul>
+<li>pd.concat, 参数是dataFrame列表, 如pd.concat([df, cf])</li>
+<li>df.loc[5] = df.apply(lambda x: x[1], axis=0, reduce=True)</li>
+</ul>
+<h4 id="1-2-5-筛选"><a href="#1-2-5-筛选" class="headerlink" title="1.2.5 筛选"></a>1.2.5 筛选</h4><ul>
+<li>形如 bf = df[df.a == 1]</li>
+<li>形如 bf = df.query(‘a==1’)</li>
+<li>形如 bf = df[df.a.isin([1])]<br>对应结果bf均为:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>a</td>
+</tr>
+</tbody></table>
+<h3 id="1-3数据转换"><a href="#1-3数据转换" class="headerlink" title="1.3数据转换"></a>1.3数据转换</h3><p>以上述的DataFrame df为例</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>a</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>a</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>a</td>
+</tr>
+</tbody></table>
+<h4 id="1-3-1-转为list"><a href="#1-3-1-转为list" class="headerlink" title="1.3.1 转为list"></a>1.3.1 转为list</h4><ul>
+<li><p>Dataframe转为list, df.values.tolist(): [[1, ‘a’], [2, ‘a’], [3, ‘a’], [4, ‘a’]]</p>
+</li>
+<li><p>Series转为list, df.a.values.tolist(): [1, 2, 3, 4]</p>
+</li>
+<li><p>Series转为list, df.loc[1].tolist(): [1, ‘a’]</p>
+<h4 id="1-3-2转为字典"><a href="#1-3-2转为字典" class="headerlink" title="1.3.2转为字典"></a>1.3.2转为字典</h4><p>DataFrame.to_dict(), 常用参数:</p>
+</li>
+<li><p>dict, 默认值, df.to_dict(): {‘a’: {1: 1, 2: 2, 3: 3, 4: 4}, ‘b’: {1: ‘a’, 2: ‘a’, 3: ‘a’, 4: ‘a’}}</p>
+</li>
+<li><p>record, df.to_dict(‘record’): [{‘a’: 1, ‘b’: ‘a’}, {‘a’: 2, ‘b’: ‘a’}, {‘a’: 3, ‘b’: ‘a’}, {‘a’: 4, ‘b’: ‘a’}]</p>
+</li>
+<li><p>list, df.to_dict(‘list’): {‘a’: [1, 2, 3, 4], ‘b’: [‘a’, ‘a’, ‘a’, ‘a’]}</p>
+</li>
+<li><p>index, df.to_dict(‘index’):  {1: {‘a’: 1, ‘b’: ‘a’}, 2: {‘a’: 2, ‘b’: ‘a’}, 3: {‘a’: 3, ‘b’: ‘a’}, 4: {‘a’: 4, ‘b’: ‘a’}}</p>
+<h2 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2.常用操作"></a>2.常用操作</h2><p>使用df1 df2为例说明</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">import pandas as pd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"># df1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">df1 &#x3D; pd.DataFrame([[1,&#39;a&#39;],[2,&#39;a&#39;],[3,&#39;b&#39;],[5,&#39;b&#39;]], columns&#x3D;[&#39;a&#39;,&#39;b&#39;])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"># df2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">df2 &#x3D; pd.DataFrame([[1,&#39;ab&#39;],[2,&#39;ab&#39;],[3,&#39;ab&#39;],[4,&#39;ab&#39;]], columns&#x3D;[&#39;a&#39;,&#39;c&#39;])</span></pre></td></tr></table></figure>
+
+<p>df1</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>b</td>
+</tr>
+</tbody></table>
+<p>df2</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>ab</td>
+</tr>
+</tbody></table>
+<h4 id="2-1-pd-merge-df1-df2-how-’’-on-’’"><a href="#2-1-pd-merge-df1-df2-how-’’-on-’’" class="headerlink" title="2.1 pd.merge(df1, df2, how=’’, on=’’)"></a>2.1 pd.merge(df1, df2, how=’’, on=’’)</h4><ul>
+<li>cf = pd.merge(df1, df2, how=’left’, on=’a’), 结果如下所示, left以左侧数据为准  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>b</td>
+<td>NaN</td>
+</tr>
+</tbody></table>
+<ul>
+<li>cf = pd.merge(df1, df2, on=’a’), 结果如下所示, 默认how=’inner’: </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+<td>ab</td>
+</tr>
+</tbody></table>
+<ul>
+<li>cf = pd.merge(df1, df2, how=’right’, on=’a’), 如下所示: </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+<td>ab</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>NaN</td>
+<td>ab</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-分组操作"><a href="#2-2-分组操作" class="headerlink" title="2.2 分组操作"></a>2.2 分组操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># 以b列的值分组, b列的非重复值为[&#39;a&#39;,&#39;b&#39;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">cf &#x3D; df1.groupby(&#39;b&#39;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">value_list &#x3D; df1.b.unique.tolist() # [&#39;a&#39;,&#39;b&#39;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">for v in value_list:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    df_target &#x3D; cf.get_group(v)</span></pre></td></tr></table></figure>
+<p>以上代码中, df_target形如以下所示:<br>‘a’值对应:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+</tr>
+</tbody></table>
+<p>‘b’值对应:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>b</td>
+</tr>
+</tbody></table>
+<p>针对分组, Pandas也提供了一些相应操作, 如下所示: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df1[&#39;c&#39;] &#x3D; df1.groupby(&#39;b&#39;).cumsum()</span></pre></td></tr></table></figure>
+
+<p>此时, df1形如以下所示:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>a</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>b</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<h4 id="2-3去重操作"><a href="#2-3去重操作" class="headerlink" title="2.3去重操作"></a>2.3去重操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cf &#x3D; df1.drop_duplicates(&#39;b&#39;, keep&#x3D;&#39;first&#39;)</span></pre></td></tr></table></figure>
+<p>cf形如: </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+</tr>
+</tbody></table>
+<p>如果根据多列去重时, drop_duplicates第一个参数为列表, 如df1.drop_duplicates([‘a’,’b’], keep=’first’), 第一个参数不传时, 默认使用全部列去重</p>
+<h4 id="2-4排序"><a href="#2-4排序" class="headerlink" title="2.4排序"></a>2.4排序</h4><p>DataFrame.sort_values(), 可用于内存排序, by为依赖排序的列名或者列名列表, ascending 升序/降序, na_position: ‘first’/‘last’, NaN值位置, 默认 ‘last’ </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df1.sort_values(by&#x3D;&#39;a&#39;, ascending&#x3D;False)</span></pre></td></tr></table></figure>
+<p>结果形如: </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>5</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>b</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>b</td>
+</tr>
+</tbody></table>
+<p>当依靠多列排序时, by的值为列表, 如df1.sort_values(by=[‘a’,’b’], ascending=False), 如果依靠多列排序, 且排序规则都是生序或者降序,ascending值为bool值即可, 如果<br>每列值均有不同的升降序规则, ascending值为list,每个元素为bool值,表示对应的列是生序还是降序</p>
+<h4 id="2-5数据归并"><a href="#2-5数据归并" class="headerlink" title="2.5数据归并"></a>2.5数据归并</h4><p>DataFrame.pivot(index=’’, columns=’’, values=’’) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># 分数dataframe</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">bf &#x3D; pd.DataFrame(&#123;&#39;aid&#39;:[1,1,1,2,2], &#39;course&#39;:[&#39;math&#39;, &#39;english&#39;,&#39;science&#39;, &#39;math&#39;,&#39;english&#39;],&#39;score&#39;:[89,82,98,89,90]&#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">cf &#x3D; bf.pivot(index&#x3D;&#39;aid&#39;,columns&#x3D;&#39;course&#39;,values&#x3D;&#39;score&#39;)</span></pre></td></tr></table></figure>
+<p>bf形如: </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>aid</th>
+<th>course</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+<td>math</td>
+<td>89</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>english</td>
+<td>82</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>science</td>
+<td>98</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>math</td>
+<td>89</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>english</td>
+<td>90</td>
+</tr>
+</tbody></table>
+<p>cf形如以下: </p>
+<table>
+<thead>
+<tr>
+<th>aid</th>
+<th>english</th>
+<th>math</th>
+<th>science</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>82.0</td>
+<td>89.0</td>
+<td>98.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>90.0</td>
+<td>89.0</td>
+<td>NaN</td>
+</tr>
+</tbody></table>
+<p>以上变换, 将aid为1/2的两人的math/english/science三门课程分数,由每个科目一条记录变成了每人一条记录<br>在系统实际应用中, 薪酬处理计薪人员的假期数据/员工全年工资导出 用到该种方式, 将每个员工的多条数据, 归并成一条数据</p>
+<h4 id="2-6-函数"><a href="#2-6-函数" class="headerlink" title="2.6 函数"></a>2.6 函数</h4><ul>
+<li>sum, 求和函数</li>
+<li>mean, 平均数</li>
+<li>max, 最大值</li>
+<li>min, 最小值</li>
+<li>all, 判断该列是否均为True, 均为True, 则返回True,否则False</li>
+<li>any, 判断该列是否包含True值, 存在True值,则返回True, 否则False</li>
+<li>count, 列/行 非NaN值个数</li>
+<li>rank, 值在该列中的排序,默认升序</li>
+</ul>
+<h3 id="3-简单小结"><a href="#3-简单小结" class="headerlink" title="3.简单小结"></a>3.简单小结</h3><p>df形如以下所示: </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>5</td>
+<td>a</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>a</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>b</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>b</td>
+</tr>
+<tr>
+<td>#### 3.1 维度</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;DataFrame为一个二维结构数据,可假定为 行、列数据,在DataFrame提供的内部方法中,基本上均是通过axis参数指明是行数据还是列数据, 比如apply函数, 1.2.2新增列与1.2.4新增行,均使用了apply.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df[&#39;d&#39;] &#x3D; df.apply(lambda x:x[&#39;a&#39;]+1, axis&#x3D;1, reduce&#x3D;True) # 结果是获取一列&#39;d&#39;, 值为对应行&#39;a&#39;的值+1</span></pre></td></tr></table></figure>
+<p>针对上面的语句, 在apply中, 当axis=1时, lambda的参数x是行数据, x的索引为’a’,’b’, 当axis=0时,x为列数据, 索引为0 1 2 3, 无论axis是0还是1, x的类型都是Series</p>
+<h4 id="3-2-NaN值处理"><a href="#3-2-NaN值处理" class="headerlink" title="3.2 NaN值处理"></a>3.2 NaN值处理</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;NaN是numpy的一种类似None的数据, 但在Python或者Django中是无法处理NaN的, 需要将该值替换, 替换方式有多种:</p>
+<ul>
+<li>简单替换, df = df.where(pd.notnull(df), None), 将所有NaN值替换为None</li>
+<li>复杂替换, DataFrame的fillna方法, 可根据需要来决定是使用前后数据替换NaN值</li>
+<li>去掉包含NaN值的行/列, dropna, 如df = df.dropna(axis=[0,1], how=’all’) 将df中列或者行的值全部为NaN的去掉</li>
+</ul>
+<h4 id="3-2-Series与DataFrame"><a href="#3-2-Series与DataFrame" class="headerlink" title="3.2 Series与DataFrame"></a>3.2 Series与DataFrame</h4><p>Series与DataFrame为常使用的Pandas数据结构, 二者是关联且用法类似, 可以理解为DataFrame为由多个Series组成, 二者很多用法均类似, DataFrame提供的很多函数, Series同样具有, 差别在于参数的传递及返回值的类型不同, 如: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df[&#39;d&#39;] &#x3D; df.apply(lambda x:x[&#39;a&#39;]+1, axis&#x3D;1, reduce&#x3D;True) # 结果是获取一列&#39;d&#39;, 值为对应行&#39;a&#39;的值+1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">df[&#39;d&#39;] &#x3D; df.a.apply(lambda x: x+1)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">df.sum()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">df.a.sum()</span></pre></td></tr></table></figure>
+<p>针对Series使用相关函数, 如apply, 不需要axis参数, 因为Series只是一维数据</p>
+<h4 id="3-4-数据源"><a href="#3-4-数据源" class="headerlink" title="3.4 数据源"></a>3.4 数据源</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;创建Pandas结构数据, 可使用多种数据源, Pandas本身也结合当前流行的数据存储等提供了很多方式</p>
+<ul>
+<li>内存数据<ul>
+<li>Json</li>
+<li>Pickling</li>
+<li>HTML</li>
+<li>msgpack</li>
+</ul>
+</li>
+<li>读取文档<ul>
+<li>Excel</li>
+<li>CSV/TEXT</li>
+</ul>
+</li>
+<li>存储介质<ul>
+<li>MySQL等数据库</li>
+<li>其他, 如HDF5, Google BigQuery, SAS Formats等</li>
+</ul>
+</li>
+</ul>
+<p>在系统中常用:  </p>
+<ul>
+<li>Excel, 读取excel, 请注意以下事项  <ul>
+<li>默认第一列为DataFrame的columns</li>
+<li>纯粹数字列, 如工号/证件号码, 读取出来默认类型是int</li>
+<li>NaN值的处理</li>
+<li>读取Excel, 默认只读取第一个sheet, 返回值为DataFrame, 如需读取多个sheet, 需配置且返回值为dict(key为sheet名称, value为DataFrame)</li>
+</ul>
+</li>
+<li>SQL</li>
+<li>django query</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;目前Pandas没有提供接口直接读取Redis数据, 当前无法做到类似MySQL的操作, 只能自己结合redis使用, 如下所示: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># redis实例</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">rds &#x3D; settings.REDIS_CLI</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">rds.set(&#39;test&#39;, df.to_msgpack()) # pandas DataFrame存入redis</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.read_msgpack(rds.get(&#39;test&#39;)) # 反向操作</span></pre></td></tr></table></figure>
+
+<h4 id="3-5-效率"><a href="#3-5-效率" class="headerlink" title="3.5 效率"></a>3.5 效率</h4><ul>
+<li>Pandas基于Numpy开发, 底层基于C, 使用Pandas批处理数据要优于Python的For循环处理等</li>
+<li>Pandas提供了优化性能的函数, 如Cython/numbda/eval等等(在我们当前系统使用中, 没有太大意义, 只有数据量达到一定层次, 才会有明显提升)</li>
+</ul>
+<h3 id="4-应用举例"><a href="#4-应用举例" class="headerlink" title="4.应用举例"></a>4.应用举例</h3><h4 id="4-1-个税计算器-简易"><a href="#4-1-个税计算器-简易" class="headerlink" title="4.1 个税计算器(简易)"></a>4.1 个税计算器(简易)</h4><p>2019年新个税采用累计计税算法, 导致每个月间的个税计算不再是独立的, 正常情况下每个月计算, 均是计算该计税年度的年收入的应缴个税值, 减去历史月已缴纳个税, 则是该月应缴个税  </p>
+<p>用pandas实现简单计税, 假定月应发工资(96)均为15000, 无社保公积金, 无专项扣除, 每月起征点(start)均为5000 如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">import pandas as pd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">from decimal import Decimal, ROUND_HALF_UP</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.DataFrame(&#123;&#39;96&#39;:[15000]*12, &#39;start&#39;:[5000]*12&#125;, index&#x3D;range(1,13))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"># 转Decimal格式</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">for clm in df.columns:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    df[clm] &#x3D; df.apply(lambda x: Decimal(x[clm]), axis&#x3D;1, reduce&#x3D;True)</span></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>96</th>
+<th>start</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>7</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>10</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>11</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>12</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+</tbody></table>
+<p>每月个税计算, 均是计算该月累计年收入对应的年度个税值,则每月累计年收入为当月及当月前的96值的和, 起征点也类似 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df[&#39;96_sum&#39;] &#x3D; df[&#39;96&#39;].cumsum()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df[&#39;start_sum&#39;] &#x3D; df.start.cumsum()</span></pre></td></tr></table></figure>
+<p>此时, df值如下  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>96</th>
+<th>start</th>
+<th>96_sum</th>
+<th>start_sum</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>15000</td>
+<td>5000</td>
+<td>15000</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15000</td>
+<td>5000</td>
+<td>30000</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15000</td>
+<td>5000</td>
+<td>45000</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15000</td>
+<td>5000</td>
+<td>60000</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15000</td>
+<td>5000</td>
+<td>75000</td>
+<td>25000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>15000</td>
+<td>5000</td>
+<td>90000</td>
+<td>30000</td>
+</tr>
+<tr>
+<td>7</td>
+<td>15000</td>
+<td>5000</td>
+<td>105000</td>
+<td>35000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>15000</td>
+<td>5000</td>
+<td>120000</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15000</td>
+<td>5000</td>
+<td>135000</td>
+<td>45000</td>
+</tr>
+<tr>
+<td>10</td>
+<td>15000</td>
+<td>5000</td>
+<td>150000</td>
+<td>50000</td>
+</tr>
+<tr>
+<td>11</td>
+<td>15000</td>
+<td>5000</td>
+<td>165000</td>
+<td>55000</td>
+</tr>
+<tr>
+<td>12</td>
+<td>15000</td>
+<td>5000</td>
+<td>180000</td>
+<td>60000</td>
+</tr>
+</tbody></table>
+<p>当月的应税工资值(97) 为 96_sum - start_sum, 代入计税公式, 获得相应的个税值(98) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">def tax_year_calculate(x):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &quot;&quot;&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    个税计算--年度计税</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    @param x: 应税工资</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    @return: 个人所得税</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &quot;&quot;&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    tax &#x3D; Decimal(0)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    if x &lt;&#x3D; Decimal(36000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.03&#39;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    elif Decimal(36000) &lt; x &lt;&#x3D; Decimal(144000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.1&#39;) - Decimal(2520)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    elif Decimal(144000) &lt; x &lt;&#x3D; Decimal(300000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.2&#39;) - Decimal(16920)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    elif Decimal(300000) &lt; x &lt;&#x3D; Decimal(420000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.25&#39;) - Decimal(31920)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    elif Decimal(420000) &lt; x &lt;&#x3D; Decimal(660000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.3&#39;) - Decimal(52920)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    elif Decimal(660000) &lt; x &lt;&#x3D; Decimal(960000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.35&#39;) - Decimal(85920)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    elif x &gt; Decimal(960000):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        tax &#x3D; x*Decimal(&#39;0.45&#39;) - Decimal(181920)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    return tax.quantize(Decimal(&#39;0.00&#39;), rounding&#x3D;ROUND_HALF_UP)</span></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df[&#39;97&#39;] &#x3D; df[&#39;96_sum&#39;] - df[&#39;start_sum&#39;]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df[&#39;98_sum&#39;] &#x3D; df.apply(lambda x: tax_year_calculate(x[&#39;97&#39;]), axis&#x3D;1, reduce&#x3D;True)</span></pre></td></tr></table></figure>
+
+<p>此时, df形如以下: </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>96</th>
+<th>start</th>
+<th>96_sum</th>
+<th>start_sum</th>
+<th>97</th>
+<th>98_sum</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>15000</td>
+<td>5000</td>
+<td>15000</td>
+<td>5000</td>
+<td>10000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15000</td>
+<td>5000</td>
+<td>30000</td>
+<td>10000</td>
+<td>20000</td>
+<td>600.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15000</td>
+<td>5000</td>
+<td>45000</td>
+<td>15000</td>
+<td>30000</td>
+<td>900.00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15000</td>
+<td>5000</td>
+<td>60000</td>
+<td>20000</td>
+<td>40000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15000</td>
+<td>5000</td>
+<td>75000</td>
+<td>25000</td>
+<td>50000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>6</td>
+<td>15000</td>
+<td>5000</td>
+<td>90000</td>
+<td>30000</td>
+<td>60000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>7</td>
+<td>15000</td>
+<td>5000</td>
+<td>105000</td>
+<td>35000</td>
+<td>70000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>15000</td>
+<td>5000</td>
+<td>120000</td>
+<td>40000</td>
+<td>80000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15000</td>
+<td>5000</td>
+<td>135000</td>
+<td>45000</td>
+<td>90000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>15000</td>
+<td>5000</td>
+<td>150000</td>
+<td>50000</td>
+<td>100000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>11</td>
+<td>15000</td>
+<td>5000</td>
+<td>165000</td>
+<td>55000</td>
+<td>110000</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>15000</td>
+<td>5000</td>
+<td>180000</td>
+<td>60000</td>
+<td>120000</td>
+<td>300.00</td>
+</tr>
+</tbody></table>
+<p>此时, 98_sum就是截止到当月年度应缴个税, 该值减去已交个税值, 就是当月个税值(98) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df[&#39;98&#39;] &#x3D; df[&#39;98_sum&#39;].diff().fillna(df[&#39;98_sum&#39;])</span></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>96</th>
+<th>start</th>
+<th>96_sum</th>
+<th>start_sum</th>
+<th>97</th>
+<th>98_sum</th>
+<th>98</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>15000</td>
+<td>5000</td>
+<td>15000</td>
+<td>5000</td>
+<td>10000</td>
+<td>300.00</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15000</td>
+<td>5000</td>
+<td>30000</td>
+<td>10000</td>
+<td>20000</td>
+<td>600.00</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15000</td>
+<td>5000</td>
+<td>45000</td>
+<td>15000</td>
+<td>30000</td>
+<td>900.00</td>
+<td>300.00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15000</td>
+<td>5000</td>
+<td>60000</td>
+<td>20000</td>
+<td>40000</td>
+<td>300.00</td>
+<td>580.00</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15000</td>
+<td>5000</td>
+<td>75000</td>
+<td>25000</td>
+<td>50000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>6</td>
+<td>15000</td>
+<td>5000</td>
+<td>90000</td>
+<td>30000</td>
+<td>60000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>7</td>
+<td>15000</td>
+<td>5000</td>
+<td>105000</td>
+<td>35000</td>
+<td>70000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>15000</td>
+<td>5000</td>
+<td>120000</td>
+<td>40000</td>
+<td>80000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>15000</td>
+<td>5000</td>
+<td>135000</td>
+<td>45000</td>
+<td>90000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>15000</td>
+<td>5000</td>
+<td>150000</td>
+<td>50000</td>
+<td>100000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>11</td>
+<td>15000</td>
+<td>5000</td>
+<td>165000</td>
+<td>55000</td>
+<td>110000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>15000</td>
+<td>5000</td>
+<td>180000</td>
+<td>60000</td>
+<td>120000</td>
+<td>300.00</td>
+<td>1000.00</td>
+</tr>
+</tbody></table>
+<h3 id="5-补充"><a href="#5-补充" class="headerlink" title="5.补充"></a>5.补充</h3><ul>
+<li>以上内容纯粹是基于个人使用的理解, 有很多错误及不足</li>
+<li>只是进行简单粗略的介绍<ul>
+<li>只介绍最最基本的东西</li>
+<li>只介绍了个人在2号系统中使用到的部分功能</li>
+<li>只介绍可以怎么用, 具体如何用请查阅文档/代码等</li>
+<li>Pandas远远不止这些(时间序列/聚合/统计等等), 只用了最基本的功能</li>
+</ul>
+</li>
+<li>以上是基于0.19版本的使用, 后续版本请自行查阅文档</li>
+</ul>
+<h4 id="6-文档"><a href="#6-文档" class="headerlink" title="6.文档"></a>6.文档</h4><p>官方文档: <a href="http://pandas.pydata.org/pandas-docs/version/0.19/index.html" target="_blank" rel="noopener">http://pandas.pydata.org/pandas-docs/version/0.19/index.html</a><br>问题大全: <a href="https://stackoverflow.com/questions/tagged/pandas" target="_blank" rel="noopener">https://stackoverflow.com/questions/tagged/pandas</a><br>待完善……</p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/blog.github.io/2019/12/05/redis-py/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://github.com/GallenHu/hexo-theme-Daily/wiki" target="_blank" rel="noopener">如何自定义这里的内容(配置教程)?</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/GallenHu" class="icon icon-github" target="_blank">github</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>随笔 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/blog.github.io/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
