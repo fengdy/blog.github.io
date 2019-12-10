@@ -100,7 +100,7 @@ function activateLightMode(){
 <li>采用单线程，避免了上下文切换和竞争，也不需要考虑各种锁的问题，不会出现死锁导致性能的损耗</li>
 <li>采用多路I/O复用模型，非阻塞IO</li>
 </ul>
-<p>redis单线程存在的缺点就是无法CPU多核的优势，不过可以通过单机开多个</p>
+<p>redis单线程存在的缺点就是无法CPU多核的优势，不过可以通过单机开多个实例</p>
 <h4 id="Redis消息订阅"><a href="#Redis消息订阅" class="headerlink" title="Redis消息订阅"></a>Redis消息订阅</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;redis支持消息订阅与发布，实现一次发布多次消费，但因为对消息无缓存等操作，当消费者异常或者下线后，发布的消息会丢失，所以redis的发布与订阅在可靠性方面不足，当对可靠性要求较高时，应使用专业的消息队列，如rabbitmq</p>
 <h4 id="Redis的持久化"><a href="#Redis的持久化" class="headerlink" title="Redis的持久化"></a>Redis的持久化</h4><p>Redis有两种持久化方式：</p>
 <ol>
